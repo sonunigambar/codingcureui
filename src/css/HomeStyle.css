@@ -1,0 +1,296 @@
+
+body::-webkit-scrollbar,
+    nav::-webkit-scrollbar
+   
+    {
+      width: 8px;
+      border-radius: 5px;
+    }
+
+    body::-webkit-scrollbar-thumb,
+    nav::-webkit-scrollbar-thumb
+    
+   {
+      background-color: #888;
+      border-radius: 5px;
+    }
+
+    body::-webkit-scrollbar-thumb:hover,
+    nav::-webkit-scrollbar-thumb:hover
+    {
+      background-color: #555;
+    }
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+body,
+    nav,content {
+      scrollbar-width: thin;
+      scrollbar-color: #888 #f1f1f1;
+    }
+    body::-webkit-scrollbar-track,
+    nav::-webkit-scrollbar-track,
+    content::-webkit-scrollbar-track {
+      background: #f1f1f1;
+      border-radius: 5px;
+    }
+
+header {
+  /* background-color: #A1C3D1;
+  color: white;
+  padding: 5;
+  text-align: center;
+  height: 60px; */
+  background-color: #A1C3D1;
+  color: white;
+  padding: 10px;
+  display: flex;
+  align-items: center; /* Vertically center the logo and text */
+  height: 80px;
+}
+.header-title {
+    flex: 1; /* Take up available space to push the h1 to the center */
+    text-align: center; /* Center the h1 tag */
+  }
+.logo {
+    max-height: 75px;
+    vertical-align: middle;
+  }
+.container {
+  display: flex;
+}
+nav {
+  background-color: #D9EEE1;
+  color: white;
+  padding: 10px;
+  width: 180px;
+  height: calc(100vh - 50px); /* Adjust height based on header and footer size */
+  overflow-y:auto; /* Enable vertical scrolling for the navbar */
+}
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+nav li {
+  margin: 10px 0;
+  cursor: pointer;
+}
+nav a {
+  color: black;
+  text-decoration: none;
+  display: block;
+  font-family: "Segoe UI",Arial,sans-serif;
+  padding: 2px 1px 1px 16px;
+  font-size: 14px;
+}
+nav a:hover{
+   /* color: #059862; */
+   background-color: #059862;
+}
+@media screen and (max-width: 768px) {
+  nav ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  nav li {
+    margin: 5px 0; /* Reduce margin for better spacing */
+  }
+}
+
+@media (max-width: 768px) {
+  nav ul {
+    list-style: none;
+    padding: 0;
+  }
+  nav li {
+    margin: 5px 0;
+  }
+}
+/* Navigation.css */
+
+.arrow-btn {
+  /* Add your custom styles for the arrow icon button */
+  font-size: 80px; /* Increase the font size to make the arrow larger */
+  background: none;
+  border: none;
+  cursor: pointer;
+  /* position: fixed; */
+  top: 50%;
+  left: 50%;
+  /* transform: translate(-50%, -50%); */
+}
+
+.arrow-rotated {
+  /* Rotate the arrow icon when the navigation is open */
+  transform: rotate(90deg);
+}
+
+.content {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto; /* Enable vertical scrolling */
+  max-height: calc(100vh - 100px); /* Adjust height based on header and footer size */
+}
+.content div {
+  display: none;
+}
+.content div.active {
+  display: block;
+}
+footer {
+  background-color: #A1C3D1;
+  color: white;
+  text-align: center;
+  padding: 10px;
+}
+
+
+  /* Social media icons */
+  .social-icons {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+    display: flex;
+    justify-content: center;
+  }
+
+  .social-icons li {
+    margin: 0 10px;
+  }
+
+  .social-icons li a {
+    color: white;
+    font-size: 20px;
+  }
+.horizontal-nav {
+  background-color: #333;
+  color: white;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+}
+.container li a.active {
+    background-color:#059862;
+  }
+.horizontal-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.horizontal-nav li {
+  margin: 0 10px;
+  float: left;
+  cursor: pointer;
+}
+/* .horizontal-nav li a.nonactive{
+    background-color: red;
+} */
+
+.horizontal-nav li.active {
+  background-color: #e7a5a5; 
+  padding:5px 10px ;
+  border-radius: 5px;
+  /* color: white;  */
+}
+@media (max-width: 768px) {
+    .horizontal-nav ul {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .horizontal-nav li {
+      margin: 5px 0;
+      color: white;
+  text-decoration: none;
+  padding: 5px 10px;
+    }
+  }
+.horizontal-nav a {
+  color: white;
+  text-decoration: none;
+  padding: 5px 10px;
+}
+pre{
+    background-color: #E7E9EB;
+}
+/* Styling for the quick links section */
+.quick_link {
+    background-color: #f2f2f2; /* Background color */
+    padding: 5px; /* Add some padding around the content */
+}
+
+/* Styling for the list items (li) */
+.quick_link ul li {
+    list-style-type: none; /* Remove the default bullet points */
+    /* margin: 5px 0; Add some vertical margin between list items */
+    float: right; /* Float the list items to the left */
+}
+
+/* Styling for the links (anchors) */
+.quick_link ul li a {
+    text-decoration: none; /* Remove underline from links */
+    color: #333; /* Text color for the links */
+    font-size: 11px; /* Font size for the links */
+    font-weight: bold; /* Bold font weight for the links */
+    padding: 13px 5px; /* Add padding around the links for better spacing */
+    border-radius: 5px; /* Add rounded corners to the links */
+    background-color: #fff; /* Background color for the links */
+    transition: background-color 0.3s, color 0.3s; /* Add smooth transitions for background and text color on hover */
+}
+
+/* Change link color and background on hover */
+.quick_link ul li a:hover {
+    color: #fff; /* Change text color on hover */
+    background-color: #007bff; /* Change background color on hover */
+}
+
+.active {
+  
+  font-family: initial;
+}
+.active ul li{
+  list-style-type: disclosure-closed;
+}
+
+.active ol li{
+  list-style-type: circle;
+}
+  
+.active li {
+  margin: 0 0 10px 0;
+}
+.question,.scenario {
+  color: red;
+}
+.note b{
+  color: red;
+  text-decoration-line: underline;
+}
+#left_nav_heading {
+  color: darkcyan;
+  font-size: 15px;
+  margin-bottom: 0;
+}
+.container ul li {
+  margin-top: 0;
+}
+.example{
+  color: darkred;
+  text-decoration-line: underline;
+}
+
+.searchItem {
+  border-radius:5px;
+  height: 30px;
+}
+
+.coding {
+  overflow-x: scroll; 
+}
+
+
