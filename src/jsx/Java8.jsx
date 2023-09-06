@@ -21,11 +21,29 @@ const Java8 = () => {
     const [searchTerm, setSearchTerm] = useState('');
     const [data, setData] = useState([]);
 
+    useEffect(() => {
+      //parse the url to get the content parameter
+        const searchParams = new URLSearchParams(window.location.search);
+        const constParams = searchParams.get('content');
+  
+        //Determine which content section to display based on the content parameter
+        if (constParams) {
+          setActiveContent(constParams);
+        }
+      },[]);
+
   const toggleNav = () => {
     setShowNav((prevState) => !prevState);
   };
 
   const showContent = (event,contentId) => {
+
+    const searchParams = new URLSearchParams();
+    searchParams.set('content',contentId);
+    const newUrl = `${window.location.pathname}?${searchParams.toString()}`;
+    window.history.pushState({},'',newUrl);
+
+    
     setActiveContent(contentId);
     if (activeLink) {
         activeLink.classList.remove("active");
@@ -54,6 +72,9 @@ const Java8 = () => {
   //       });
   //   }
   // }, [searchTerm, activeContent]);
+
+  
+
 
   const filterLinks = (link) =>
     link.toLowerCase().includes(searchTerm.toLowerCase());

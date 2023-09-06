@@ -24,11 +24,30 @@ const LogicalQuestion = () => {
     const [activeLink, setActiveLink] = useState(null);
     const [searchTerm, setSearchTerm] = useState('');
 
+
+    useEffect(() => {
+      //parse the url to get the content parameter
+        const searchParams = new URLSearchParams(window.location.search);
+        const constParams = searchParams.get('content');
+  
+        //Determine which content section to display based on the content parameter
+        if (constParams) {
+          setActiveContent(constParams);
+        }
+      },[]);
+      
+
   const toggleNav = () => {
     setShowNav((prevState) => !prevState);
   };
 
   const showContent = (event,contentId) => {
+
+    const searchParams = new URLSearchParams();
+    searchParams.set('content',contentId);
+    const newUrl = `${window.location.pathname}?${searchParams.toString()}`;
+    window.history.pushState({},'',newUrl);
+
     setActiveContent(contentId);
     if (activeLink) {
         activeLink.classList.remove("active");
