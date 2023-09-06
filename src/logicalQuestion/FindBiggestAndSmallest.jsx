@@ -1,6 +1,18 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { handleFormSubmit } from '../utility/HandleSubmitCommonCode';
 
-const FindBiggestAndSmallest = () => {
+const FindBiggestAndSmallest = ({ id, contenId, data }) => {
+    const [comment, setComment] = useState("");
+
+    const handleCommentChange = (event) => {
+      setComment(event.target.value);
+    };
+  
+    const handleSubmit = (event) => {
+      event.preventDefault();
+      event.preventDefault();
+      handleFormSubmit(comment, contenId, setComment, "comment-findBiggestandSmallest");
+    };
   return (
     <div className='active'>
        <h3>Write a program to find smallest and biggest element of an Array ?</h3>
@@ -38,6 +50,29 @@ const FindBiggestAndSmallest = () => {
                 `}
             </pre>
         </section>
+        <span className="comment-box">
+        <form onSubmit={handleSubmit}>
+          <textarea
+            rows="4"
+            cols={150}
+            placeholder="Enter your comment"
+            value={comment}
+            onChange={handleCommentChange}
+          />
+          <button type="submit" className="cmt_btn">
+            send
+          </button>
+        </form>
+      </span>
+      <span className="comment-list">
+        <ul id="comment-findBiggestandSmallest">
+          {data.map((comment) => (
+            <li key={comment.commentId}>
+              <p>{comment.commentContent}</p>
+            </li>
+          ))}
+        </ul>
+      </span>
     </div>
   )
 }

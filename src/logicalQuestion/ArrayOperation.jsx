@@ -1,6 +1,18 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { handleFormSubmit } from '../utility/HandleSubmitCommonCode';
 
-const ArrayOperation = () => {
+const ArrayOperation = ({ id, contenId, data }) => {
+    const [comment, setComment] = useState("");
+
+    const handleCommentChange = (event) => {
+      setComment(event.target.value);
+    };
+  
+    const handleSubmit = (event) => {
+      event.preventDefault();
+      event.preventDefault();
+      handleFormSubmit(comment, contenId, setComment, "comment-ArrayOperation");
+    };
   return (
     <div className='active'>
        <h3>How to create an Array which is reading from the user ?</h3>
@@ -26,6 +38,29 @@ const ArrayOperation = () => {
                 `}
             </pre>
         </section>
+        <span className="comment-box">
+        <form onSubmit={handleSubmit}>
+          <textarea
+            rows="4"
+            cols={150}
+            placeholder="Enter your comment"
+            value={comment}
+            onChange={handleCommentChange}
+          />
+          <button type="submit" className="cmt_btn">
+            send
+          </button>
+        </form>
+      </span>
+      <span className="comment-list">
+        <ul id="comment-ArrayOperation">
+          {data.map((comment) => (
+            <li key={comment.commentId}>
+              <p>{comment.commentContent}</p>
+            </li>
+          ))}
+        </ul>
+      </span>
     </div>
   )
 }

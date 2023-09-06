@@ -17,12 +17,15 @@ import DisplayCommonElement from '../logicalQuestion/DisplayCommonElement';
 import FindBiggestAndSmallest from '../logicalQuestion/FindBiggestAndSmallest';
 import FindingMissingElement from '../logicalQuestion/FindingMissingElement';
 import SortingStringArray from '../logicalQuestion/SortingStringArray';
+import axios from 'axios';
 
 const LogicalQuestion = () => {
     const [showNav, setShowNav] = useState(true);
     const [activeContent, setActiveContent] = useState(null);
     const [activeLink, setActiveLink] = useState(null);
     const [searchTerm, setSearchTerm] = useState('');
+    const [data, setData] = useState([]);
+
 
 
     useEffect(() => {
@@ -54,6 +57,14 @@ const LogicalQuestion = () => {
       }
     event.target.classList.add("active");
     setActiveLink(event.target);
+      axios.get("https://sweet-creator-production.up.railway.app/api/comments?commentType="+contentId)
+        .then((resp) => {
+          // console.log(resp.data);
+          setData(resp.data); // Assuming the response data is what you want to pass to components
+        })
+        .catch((error) => {
+          // console.log(error);
+        });
   };
 
   useEffect(() => {
@@ -184,23 +195,23 @@ const LogicalQuestion = () => {
     </nav>
 
     <div class="content">
-        <div style={{ display: activeContent === 'FindAlphaNumeric' ? "block" : "none" }}>{<FindAlphaNumeric />}</div>
-        <div style={{ display: activeContent === 'FindDuplicateCharacters' ? "block" : "none" }}>{<FindDuplicateCharacters />}</div> 
-        <div style={{ display: activeContent === 'NumberOfCharEachWord' ? "block" : "none" }}>{<FindNumberOfCharEachWord />}</div>
-        <div style={{ display: activeContent === 'OccuranceOfEachCharacter' ? "block" : "none" }}>{<OccuranceOfEachCharacter />}</div>
-        <div style={{ display: activeContent === 'Palindrome' ? "block" : "none" }}>{<Palindrome />}</div>
-        <div style={{ display: activeContent === 'RemoveDuplicateCharacterFromString' ? "block" : "none" }}>{<RemoveDuplicateCharacterFromString />}</div>
-        <div style={{ display: activeContent === 'ReverseFullString' ? "block" : "none" }}>{<ReverseFullString />}</div>
-        <div style={{ display: activeContent === 'ReverseStringWordByWord' ? "block" : "none" }}>{<ReverseStringWordByWord />}</div>
-        <div style={{ display: activeContent === 'SortingString' ? "block" : "none" }}>{<SortingString />}</div>
-        <div style={{ display: activeContent === 'SwapTwoStringWithOutTaking3rdVariable' ? "block" : "none" }}>{<SwapTwoStringWithOutTaking3rdVariable />}</div>
-        <div style={{ display: activeContent === 'ArrayOperation' ? "block" : "none" }}>{<ArrayOperation />}</div>
-        <div style={{ display: activeContent === 'MergeTwoArray' ? "block" : "none" }}>{<MergeTwoArray />}</div>
-        <div style={{ display: activeContent === 'MergeTwoArrayInZigZag' ? "block" : "none" }}>{<MergeTwoArrayInZigZag />}</div>
-        <div style={{ display: activeContent === 'DisplayCommonElement' ? "block" : "none" }}>{<DisplayCommonElement />}</div>
-        <div style={{ display: activeContent === 'FindBiggestAndSmallest' ? "block" : "none" }}>{<FindBiggestAndSmallest />}</div>
-        <div style={{ display: activeContent === 'FindingMissingElement' ? "block" : "none" }}>{<FindingMissingElement />}</div>
-        <div style={{ display: activeContent === 'SortingStringArray' ? "block" : "none" }}>{<SortingStringArray />}</div>
+        <div style={{ display: activeContent === 'FindAlphaNumeric' ? "block" : "none" }}>{<FindAlphaNumeric id='FindAlphaNumeric' contenId='FindAlphaNumeric' data={data}/>}</div>
+        <div style={{ display: activeContent === 'FindDuplicateCharacters' ? "block" : "none" }}>{<FindDuplicateCharacters id='FindDuplicateCharacters' contenId='FindDuplicateCharacters' data={data}/>}</div> 
+        <div style={{ display: activeContent === 'NumberOfCharEachWord' ? "block" : "none" }}>{<FindNumberOfCharEachWord id='NumberOfCharEachWord' contenId='NumberOfCharEachWord' data={data}/>}</div>
+        <div style={{ display: activeContent === 'OccuranceOfEachCharacter' ? "block" : "none" }}>{<OccuranceOfEachCharacter id='OccuranceOfEachCharacter' contenId='OccuranceOfEachCharacter' data={data}/>}</div>
+        <div style={{ display: activeContent === 'Palindrome' ? "block" : "none" }}>{<Palindrome id='Palindrome' contenId='Palindrome' data={data}/>}</div>
+        <div style={{ display: activeContent === 'RemoveDuplicateCharacterFromString' ? "block" : "none" }}>{<RemoveDuplicateCharacterFromString id='RemoveDuplicateCharacterFromString' contenId='RemoveDuplicateCharacterFromString' data={data}/>}</div>
+        <div style={{ display: activeContent === 'ReverseFullString' ? "block" : "none" }}>{<ReverseFullString id='ReverseFullString' contenId='ReverseFullString' data={data}/>}</div>
+        <div style={{ display: activeContent === 'ReverseStringWordByWord' ? "block" : "none" }}>{<ReverseStringWordByWord id='ReverseStringWordByWord' contenId='ReverseStringWordByWord' data={data}/>}</div>
+        <div style={{ display: activeContent === 'SortingString' ? "block" : "none" }}>{<SortingString id='SortingString' contenId='SortingString' data={data}/>}</div>
+        <div style={{ display: activeContent === 'SwapTwoStringWithOutTaking3rdVariable' ? "block" : "none" }}>{<SwapTwoStringWithOutTaking3rdVariable id='SwapTwoStringWithOutTaking3rdVariable' contenId='SwapTwoStringWithOutTaking3rdVariable' data={data}/>}</div>
+        <div style={{ display: activeContent === 'ArrayOperation' ? "block" : "none" }}>{<ArrayOperation id='ArrayOperation' contenId='ArrayOperation' data={data}/>}</div>
+        <div style={{ display: activeContent === 'MergeTwoArray' ? "block" : "none" }}>{<MergeTwoArray id='MergeTwoArray' contenId='MergeTwoArray' data={data}/>}</div>
+        <div style={{ display: activeContent === 'MergeTwoArrayInZigZag' ? "block" : "none" }}>{<MergeTwoArrayInZigZag id='MergeTwoArrayInZigZag' contenId='MergeTwoArrayInZigZag' data={data}/>}</div>
+        <div style={{ display: activeContent === 'DisplayCommonElement' ? "block" : "none" }}>{<DisplayCommonElement id='DisplayCommonElement' contenId='DisplayCommonElement' data={data}/>}</div>
+        <div style={{ display: activeContent === 'FindBiggestAndSmallest' ? "block" : "none" }}>{<FindBiggestAndSmallest id='FindBiggestAndSmallest' contenId='FindBiggestAndSmallest' data={data}/>}</div>
+        <div style={{ display: activeContent === 'FindingMissingElement' ? "block" : "none" }}>{<FindingMissingElement id='FindingMissingElement' contenId='FindingMissingElement' data={data}/>}</div>
+        <div style={{ display: activeContent === 'SortingStringArray' ? "block" : "none" }}>{<SortingStringArray id='SortingStringArray' contenId='SortingStringArray' data={data}/>}</div>
     </div>
   </div>
   )

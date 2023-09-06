@@ -4,12 +4,15 @@ import HadoopComponent from '../hadoop/HadoopComponent';
 import MapReduce from '../hadoop/MapReduce';
 import DescribeHadoopComponent from '../hadoop/DescribeHadoopComponent';
 import ProblemHadoop from '../hadoop/ProblemHadoop';
+import axios from 'axios';
 
 const Hadoop = () => {
     const [showNav, setShowNav] = useState(true);
     const [activeContent, setActiveContent] = useState(null);
     const [activeLink, setActiveLink] = useState(null);
     const [searchTerm, setSearchTerm] = useState('');
+    const [data, setData] = useState([]);
+
 
     useEffect(() => {
       //parse the url to get the content parameter
@@ -39,6 +42,14 @@ const Hadoop = () => {
       }
     event.target.classList.add("active");
     setActiveLink(event.target);
+      axios.get("https://sweet-creator-production.up.railway.app/api/comments?commentType="+contentId)
+        .then((resp) => {
+          // console.log(resp.data);
+          setData(resp.data); // Assuming the response data is what you want to pass to components
+        })
+        .catch((error) => {
+          // console.log(error);
+        });
   };
 
   const filterLinks = (link) =>
@@ -97,11 +108,11 @@ const Hadoop = () => {
     </nav>
 
     <div class="content">
-        <div style={{ display: activeContent === 'WhatIsHDFS' ? "block" : "none" }}>{<WhatIsHdfs />}</div>
-         <div style={{ display: activeContent === 'lldhc' ? "block" : "none" }}>{<HadoopComponent/>}</div>
-        <div style={{ display: activeContent === 'mapReduce' ? "block" : "none" }}>{<MapReduce/>}</div>
-       <div style={{ display: activeContent === 'DHC' ? "block" : "none" }}>{<DescribeHadoopComponent/>}</div>
-        <div style={{ display: activeContent === 'PIHC' ? "block" : "none" }}>{<ProblemHadoop/>}</div>
+        <div style={{ display: activeContent === 'WhatIsHDFS' ? "block" : "none" }}>{<WhatIsHdfs id='WhatIsHDFS' contenId='WhatIsHDFS' data={data}/>}</div>
+         <div style={{ display: activeContent === 'lldhc' ? "block" : "none" }}>{<HadoopComponent id='lldhc' contenId='lldhc' data={data}/>}</div>
+        <div style={{ display: activeContent === 'mapReduce' ? "block" : "none" }}>{<MapReduce id='mapReduce' contenId='mapReduce' data={data}/>}</div>
+       <div style={{ display: activeContent === 'DHC' ? "block" : "none" }}>{<DescribeHadoopComponent id='DHC' contenId='DHC' data={data}/>}</div>
+        <div style={{ display: activeContent === 'PIHC' ? "block" : "none" }}>{<ProblemHadoop id='PIHC' contenId='PIHC' data={data}/>}</div>
 
 
 

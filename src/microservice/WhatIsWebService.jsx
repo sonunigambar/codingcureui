@@ -1,7 +1,23 @@
-import React from 'react'
+import React, { useState } from 'react'
 import pic1 from '../img/DistributedTechnology.png'
 import pic2 from '../img/multipleserver.png'
-const WhatIsWebService = () => {
+import { handleFormSubmit } from '../utility/HandleSubmitCommonCode';
+const WhatIsWebService = ({ id, contenId, data }) => {
+
+  const [comment, setComment] = useState('');
+ 
+
+  const handleCommentChange = (event) => {
+    setComment(event.target.value);
+  };
+    
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    event.preventDefault();
+    handleFormSubmit(comment, contenId, setComment,"comment-whatIswebservice");
+    
+      };
+
   return (
     <div className='active'>
       <h2>What is Web Service ?</h2>
@@ -108,6 +124,38 @@ const WhatIsWebService = () => {
             <li>Http is firewall friendly protocol . so that we no need to do configuration in making my program exchanging the data over a network .</li>
         </ol>
       </p>
+      <span className='comment-box'>
+          <form onSubmit={handleSubmit}>
+            <textarea
+              rows="4"
+              cols={150}
+              placeholder="Enter your comment"
+              value={comment}
+              onChange={handleCommentChange}
+            />
+            <button type="submit" className='cmt_btn'>
+              {/* <i className="fas fa-paper-plane"></i> */}
+              send
+            </button>
+        </form>
+      </span>
+      <span className='comment-list'>
+      <ul id="comment-whatIswebservice">
+          {/* {data.map((item, index) => (
+            <li key={index}>{item}</li>
+          ))} */}
+          {/* {console.log(data)}
+          {console.log(contenId)}
+          {console.log(id)} */}
+
+          {data.map((comment) => (
+          <li key={comment.commentId}>
+            <p>{comment.commentContent}</p>
+          </li>
+        ))}
+        </ul>
+      </span>
+      
     </div>
   )
 }

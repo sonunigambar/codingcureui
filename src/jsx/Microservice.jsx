@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import EurekaServiceRegistry from '../microservice/EurekaServiceRegistry';
 import WhatIsWebService from '../microservice/WhatIsWebService';
+import axios from 'axios';
 
 const Microservice = () => {
     const [showNav, setShowNav] = useState(true);
     const [activeContent, setActiveContent] = useState(null);
     const [activeLink, setActiveLink] = useState(null);
     const [searchTerm, setSearchTerm] = useState('');
+    const [data, setData] = useState([]);
+
 
 
     useEffect(() => {
@@ -30,6 +33,7 @@ const Microservice = () => {
     searchParams.set('content',contentId);
     const newUrl = `${window.location.pathname}?${searchParams.toString()}`;
     window.history.pushState({},'',newUrl);
+
     
     setActiveContent(contentId);
     if (activeLink) {
@@ -37,6 +41,14 @@ const Microservice = () => {
       }
     event.target.classList.add("active");
     setActiveLink(event.target);
+      axios.get("https://sweet-creator-production.up.railway.app/api/comments?commentType="+contentId)
+        .then((resp) => {
+          // console.log(resp.data);
+          setData(resp.data); // Assuming the response data is what you want to pass to components
+        })
+        .catch((error) => {
+          // console.log(error);
+        });
   };
 
   const filterLinks = (link) =>
@@ -83,8 +95,8 @@ const Microservice = () => {
     </nav>
 
     <div class="content">
-        <div style={{ display: activeContent === 'EurekaServiceRegistry' ? "block" : "none" }}>{<EurekaServiceRegistry />}</div>
-        <div style={{ display: activeContent === 'WhatIsWebService' ? "block" : "none" }}>{<WhatIsWebService />}</div> 
+        <div style={{ display: activeContent === 'EurekaServiceRegistry' ? "block" : "none" }}>{<EurekaServiceRegistry id='EurekaServiceRegistry' contenId='EurekaServiceRegistry' data={data} />}</div>
+        <div style={{ display: activeContent === 'WhatIsWebService' ? "block" : "none" }}>{<WhatIsWebService  id='WhatIsWebService' contenId='WhatIsWebService' data={data} />}</div> 
          {/* <div style={{ display: activeContent === 'FunctionalInterface' ? "block" : "none" }}>{<Functionalinterface />}</div>
         <div style={{ display: activeContent === 'Predicate' ? "block" : "none" }}>{<Predicate />}</div> */}
         {/* <div style={{ display: activeContent === 'FunctionalInterface' ? "block" : "none" }}>{<Functionalinterface />}</div>

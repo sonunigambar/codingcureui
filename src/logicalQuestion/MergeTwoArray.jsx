@@ -1,6 +1,18 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { handleFormSubmit } from '../utility/HandleSubmitCommonCode';
 
-const MergeTwoArray = () => {
+const MergeTwoArray = ({ id, contenId, data }) => {
+  const [comment, setComment] = useState("");
+
+  const handleCommentChange = (event) => {
+    setComment(event.target.value);
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    event.preventDefault();
+    handleFormSubmit(comment, contenId, setComment, "comment-MergeTwoArray");
+  };
   return (
     <div className='active'>
        <h3>Write a program to merge two different Array into single Array ?</h3>
@@ -32,6 +44,29 @@ const MergeTwoArray = () => {
                 `}
             </pre>
         </section>
+        <span className="comment-box">
+        <form onSubmit={handleSubmit}>
+          <textarea
+            rows="4"
+            cols={150}
+            placeholder="Enter your comment"
+            value={comment}
+            onChange={handleCommentChange}
+          />
+          <button type="submit" className="cmt_btn">
+            send
+          </button>
+        </form>
+      </span>
+      <span className="comment-list">
+        <ul id="comment-MergeTwoArray">
+          {data.map((comment) => (
+            <li key={comment.commentId}>
+              <p>{comment.commentContent}</p>
+            </li>
+          ))}
+        </ul>
+      </span>
     </div>
   )
 }

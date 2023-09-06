@@ -1,7 +1,23 @@
-import React from 'react'
+import React, { useState } from 'react'
 import eureka from '../img/eureka.png'
+import { handleFormSubmit } from '../utility/HandleSubmitCommonCode';
 
-const EurekaServiceRegistry = () => {
+const EurekaServiceRegistry = ({ id, contenId, data }) => {
+
+  const [comment, setComment] = useState('');
+ 
+
+  const handleCommentChange = (event) => {
+    setComment(event.target.value);
+  };
+    
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    event.preventDefault();
+    handleFormSubmit(comment, contenId, setComment,"comment-EurekaRegistry");
+    
+      };
+
   return (
     <div id="eureka_service_registry" class="active">
         <h2>What is Service Registry</h2>
@@ -139,6 +155,37 @@ const EurekaServiceRegistry = () => {
           `}
         </pre>
         </p>
+        <span className='comment-box'>
+          <form onSubmit={handleSubmit}>
+            <textarea
+              rows="4"
+              cols={150}
+              placeholder="Enter your comment"
+              value={comment}
+              onChange={handleCommentChange}
+            />
+            <button type="submit" className='cmt_btn'>
+              {/* <i className="fas fa-paper-plane"></i> */}
+              send
+            </button>
+        </form>
+      </span>
+      <span className='comment-list'>
+      <ul id="comment-EurekaRegistry">
+          {/* {data.map((item, index) => (
+            <li key={index}>{item}</li>
+          ))} */}
+          {/* {console.log(data)}
+          {console.log(contenId)}
+          {console.log(id)} */}
+
+          {data.map((comment) => (
+          <li key={comment.commentId}>
+            <p>{comment.commentContent}</p>
+          </li>
+        ))}
+        </ul>
+      </span>
       </div>
   )
 }
