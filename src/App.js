@@ -1,5 +1,6 @@
 
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { HashRouter as Router } from 'react-router-dom';
 import React from 'react';
 import Headerbar from './jsx/Headerbar';
 import HorizontalNav from './jsx/HorizontalNav';
@@ -21,20 +22,20 @@ function App() {
       {/* <MainPage />
       <Headerbar />
       <HorizontalNav /> */}
-      <BrowserRouter basename="/codingcureui">
+      <Router>
       {/* <MainPage /> */}
       <Headerbar />
       <HorizontalNav />
       <Routes>
-        <Route path='/codingcureui' element = {<Home/>}/>
+        <Route path='/' element = {<Home/>}/>
         <Route path='/spark' element = {<Spark />}/>
-        <Route path='/java8' element = {<Java8 />}/>
+        <Route path='/codingcureui/java8' element = {<Java8 />}/>
         <Route path='/hadoop' element = {<Hadoop />}/>
         <Route path='/microservice' element = {<Microservice />}/>
         <Route path='/logicalQuestion' element = {<LogicalQuestion />}/>
       </Routes>
       <Footer />
-    </BrowserRouter>
+    </Router>
 
     {/* <Footer /> */}
     </>

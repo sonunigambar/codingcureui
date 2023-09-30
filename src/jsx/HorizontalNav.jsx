@@ -35,7 +35,7 @@ const HorizontalNav = () => {
     </ul> */}
     <ul>
     <li><a href="/">Home</a></li>
-      <li><a href="/java8">Java8</a></li>
+      <li><a href="/codingcureui/java8">Java8</a></li>
       <li><a href="/logicalQuestion" class="active">LogicalQuestion</a></li>
       <li><a href="/hadoop">Hadoop</a></li>
       <li><a href="/microservice">MicroService</a></li>
