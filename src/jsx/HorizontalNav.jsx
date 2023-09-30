@@ -3,6 +3,7 @@ import Home from './Home';
 import Spark from './Spark';
 import Java8 from './Java8';
 import Hadoop from './Hadoop';
+import { Link } from 'react-router-dom';
 
 
 const HorizontalNav = () => {
@@ -34,11 +35,11 @@ const HorizontalNav = () => {
                 </li>
     </ul> */}
     <ul>
-    <li><a href="/">Home</a></li>
-      <li><a href="/codingcureui/java8">Java8</a></li>
-      <li><a href="/logicalQuestion" class="active">LogicalQuestion</a></li>
-      <li><a href="/hadoop">Hadoop</a></li>
-      <li><a href="/microservice">MicroService</a></li>
+    <li><Link to="/">Home</Link></li>
+      <li><Link to="/java8">Java8</Link></li>
+      <li><Link to="/logicalQuestion" class="active">LogicalQuestion</Link></li>
+      <li><Link to="/hadoop">Hadoop</Link></li>
+      <li><Link to="/microservice">MicroService</Link></li>
     </ul>
    
   </div>
