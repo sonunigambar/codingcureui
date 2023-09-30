@@ -22,7 +22,7 @@ function App() {
       {/* <MainPage />
       <Headerbar />
       <HorizontalNav /> */}
-      <Router>
+      <BrowserRouter basename="/codingcureui">
       {/* <MainPage /> */}
       <Headerbar />
       <HorizontalNav />
@@ -35,7 +35,7 @@ function App() {
         <Route path='/logicalQuestion' element = {<LogicalQuestion />}/>
       </Routes>
       <Footer />
-    </Router>
+    </BrowserRouter>
 
     {/* <Footer /> */}
     </>
