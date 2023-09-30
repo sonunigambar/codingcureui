@@ -21,12 +21,12 @@ function App() {
       {/* <MainPage />
       <Headerbar />
       <HorizontalNav /> */}
-      <BrowserRouter>
+      <BrowserRouter basename="/codingcureui">
       {/* <MainPage /> */}
       <Headerbar />
       <HorizontalNav />
       <Routes>
-        <Route path='/' element = {<Home/>}/>
+        <Route path='/codingcureui' element = {<Home/>}/>
         <Route path='/spark' element = {<Spark />}/>
         <Route path='/java8' element = {<Java8 />}/>
         <Route path='/hadoop' element = {<Hadoop />}/>
