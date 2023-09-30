@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/codingcureui/static/css/main.3d4f1632.css",
-    "main.js": "/codingcureui/static/js/main.392d48b4.js",
+    "main.js": "/codingcureui/static/js/main.2ceecae1.js",
     "static/js/787.a42f4169.chunk.js": "/codingcureui/static/js/787.a42f4169.chunk.js",
     "static/media/post-slide-1.jpg": "/codingcureui/static/media/post-slide-1.d383df3b6379de3ebfa9.jpg",
     "static/media/post-slide-6.jpg": "/codingcureui/static/media/post-slide-6.52bd52951b1de53120e5.jpg",
@@ -18,11 +18,11 @@
     "static/media/eureka.png": "/codingcureui/static/media/eureka.a2a14b31ce5ec2e563c3.png",
     "index.html": "/codingcureui/index.html",
     "main.3d4f1632.css.map": "/codingcureui/static/css/main.3d4f1632.css.map",
-    "main.392d48b4.js.map": "/codingcureui/static/js/main.392d48b4.js.map",
+    "main.2ceecae1.js.map": "/codingcureui/static/js/main.2ceecae1.js.map",
     "787.a42f4169.chunk.js.map": "/codingcureui/static/js/787.a42f4169.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.3d4f1632.css",
-    "static/js/main.392d48b4.js"
+    "static/js/main.2ceecae1.js"
   ]
 }
